@@ -24,7 +24,7 @@ public class Main {
 //        reverseArray(arr);
 
 //        5
-//        System.out.println( fibonacci(8));
+        System.out.println( factorialOfNumber(3));
 
 //        6
 //        char[] chars = new char[] { 'a', 'b','c', 'b', 'a' };
@@ -118,11 +118,11 @@ public class Main {
     }
 
     //    5. Factorial Calculation: Write a program to calculate the factorial of a given number.********* + recursive solution.
-    public static int fibonacci(int value) {
-        if (value <= 1) {
-            return value;
-        }
-        return fibonacci(value - 1) + fibonacci(value - 2);
+    public static int factorialOfNumber(int value) {
+        if (value >= 1)
+            return value * factorialOfNumber(value - 1);
+        else
+            return 1;
     }
 
     //    6. Palindrome Check: Check if a given string is a palindrome. (use char string)
@@ -155,6 +155,12 @@ public class Main {
     }
 
     //8. Fibonacci Series: Generate and print the first N elements of the Fibonacci series.******** + recursive solution.
+    public static int fibonacci(int value) {
+        if (value <= 1) {
+            return value;
+        }
+        return fibonacci(value - 1) + fibonacci(value - 2);
+    }
     public static void fibonacciSeries(int value) {
         for (int it = 0; it < value; it++) {
             System.out.print(fibonacci(it) + " ");
