@@ -1,12 +1,8 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         int[] arr = {11, 7, 8, 2, 5};
-
 //        1
 //        System.out.println(sumOfArray(arr));
 
@@ -16,18 +12,18 @@ public class Main {
 //        3.1
 //        System.out.println(evenOdd(7) ? "even" : "odd");
 //        3.2
-//        for(int it=0; it<arr.length; it++){
-//            System.out.println(evenOdd(arr[it]) ? "even" : "odd");
+//        for(int it : arr){
+//            System.out.println(evenOdd(it) ? "even" : "odd");
 //        }
 
 //        4
 //        reverseArray(arr);
 
 //        5
-        System.out.println( factorialOfNumber(3));
+//        System.out.println( factorialOfNumber(3));
 
 //        6
-//        char[] chars = new char[] { 'a', 'b','c', 'b', 'a' };
+//        char[] chars = new char[] { 'a', 'b', 'c', 'b', 'a' };
 //        System.out.println(palindromeCheck(chars) ? "Palindrome" : "not palindrome");
 
 //        7
@@ -83,25 +79,25 @@ public class Main {
     }
 
 
-    //    1. Sum of Array Elements: Write a program to find the sum of all elements in an array.
+    //  1. Sum of Array Elements: Write a program to find the sum of all elements in an array.
     public static int sumOfArray(int[] arr) {
         int sum = 0;
-        for (int it = 0; it < arr.length; it++) {
-            sum += arr[it];
+        for (int it : arr) {
+            sum += it;
         }
         return sum;
     }
 
-    //    2. Largest Element in Array: Find and print the largest element in an array.
+    //  2. Largest Element in Array: Find and print the largest element in an array.
     public static int largestElemFromArray(int[] arr) {
-        int maxi = -100;
-        for (int it = 0; it < arr.length; it++) {
-            maxi = maxi > arr[it] ? maxi : arr[it];
+        int maxi = Integer.MIN_VALUE;
+        for (int it : arr) {
+            maxi = maxi > it ? maxi : it;
         }
         return maxi;
     }
 
-    //    3. Even or Odd Numbers: Check if a given number is even or odd using if-else. (also count in an array)
+    //  3. Even or Odd Numbers: Check if a given number is even or odd using if-else. (also count in an array)
     public static boolean evenOdd(int value) {
         if ((value & 1) != 1) {
             return true;
@@ -110,14 +106,14 @@ public class Main {
         }
     }
 
-    //    4. Reverse an Array: Reverse the elements of an array.
+    //  4. Reverse an Array: Reverse the elements of an array.
     public static void reverseArray(int[] arr) {
         for (int it = arr.length - 1; it >= 0; it--) {
             System.out.print(arr[it] + " ");
         }
     }
 
-    //    5. Factorial Calculation: Write a program to calculate the factorial of a given number.********* + recursive solution.
+    //  5. Factorial Calculation: Write a program to calculate the factorial of a given number.********* + recursive solution.
     public static int factorialOfNumber(int value) {
         if (value >= 1)
             return value * factorialOfNumber(value - 1);
@@ -125,7 +121,7 @@ public class Main {
             return 1;
     }
 
-    //    6. Palindrome Check: Check if a given string is a palindrome. (use char string)
+    //  6. Palindrome Check: Check if a given string is a palindrome. (use char string)
     public static boolean palindromeCheck(char[] str) {
         int l = 0, r = str.length - 1;
         boolean flag = true;
@@ -139,7 +135,7 @@ public class Main {
         return true;
     }
 
-    //    7. Prime Number Check: Determine whether a given number is prime.
+    //  7. Prime Number Check: Determine whether a given number is prime.
     public static boolean isPrime(int value) {
         if (value <= 0) {
             return false;
@@ -154,35 +150,36 @@ public class Main {
         return flag;
     }
 
-    //8. Fibonacci Series: Generate and print the first N elements of the Fibonacci series.******** + recursive solution.
+    //  8. Fibonacci Series: Generate and print the first N elements of the Fibonacci series.******** + recursive solution.
     public static int fibonacci(int value) {
         if (value <= 1) {
             return value;
         }
         return fibonacci(value - 1) + fibonacci(value - 2);
     }
+
     public static void fibonacciSeries(int value) {
         for (int it = 0; it < value; it++) {
             System.out.print(fibonacci(it) + " ");
         }
     }
 
-    //9. Linear Search: Implement a linear search algorithm to find an element in an array. (true or false return type)
+    //  9. Linear Search: Implement a linear search algorithm to find an element in an array. (true or false return type)
     public static boolean linearSearch(int[] arr, int target) {
-        for (int it = 0; it < arr.length; it++) {
-            if (arr[it] == target) {
+        for (int it : arr) {
+            if (it == target) {
                 return true;
             }
         }
         return false;
     }
 
-    //    10. Binary Search: Implement binary search for a sorted array.
+    //   10. Binary Search: Implement binary search for a sorted array.
     public static boolean binarySearch(int[] arr, int target) {
         int left = 0;
         int right = arr.length - 1;
         while (left <= right) {
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
             if (arr[mid] == target) {
                 return true;
             }
@@ -196,16 +193,16 @@ public class Main {
         return false;
     }
 
-    //11. Duplicate Elements: Find and print duplicate elements in an array. (true or false return type)
+    //  11. Duplicate Elements: Find and print duplicate elements in an array. (true or false return type)
     public static void findDuplicate(int[] arr) {
         HashMap<Integer, Integer> map = new HashMap<>();
         Set<Integer> data = new LinkedHashSet<Integer>();
-        for (int it = 0; it < arr.length; it++) {
-            if (map.get(arr[it]) == null) {
-                map.put(arr[it], 1);
+        for (int it : arr) {
+            if (map.get(it) == null) {
+                map.put(it, 1);
             } else {
-                map.put(arr[it], map.get(arr[it]) + 1);
-                data.add(arr[it]);
+                map.put(it, map.get(it) + 1);
+                data.add(it);
             }
         }
         int size = data.size();
@@ -277,7 +274,7 @@ public class Main {
         }
     }
 
-    //    18. String Reversal: Reverse a given string without using built-in functions. apple, elppa
+    // 18. String Reversal: Reverse a given string without using built-in functions. apple, elppa
     public static String reverseStr(String str) {
         String rev = "";
         for (int it = str.length() - 1; it >= 0; it--) {
@@ -286,35 +283,35 @@ public class Main {
         return rev;
     }
 
-    //19. Armstrong Number: Check if a number is an Armstrong number.
+    //  19. Armstrong Number: Check if a number is an Armstrong number.
     public static boolean isArmstrong(int value) {
         int num = value, sum = 0, dig = 0;
 
-        while(num>0){
-            num/=10;
+        while (num > 0) {
+            num /= 10;
             dig++;
         }
-        num=value;
-        while(num>0){
-            int last=num%10;
-            sum +=  (Math.pow(last, dig));
-            num/=10;
+        num = value;
+        while (num > 0) {
+            int last = num % 10;
+            sum += (Math.pow(last, dig));
+            num /= 10;
         }
-
-        return (value==sum ? true : false);
+        return (value == sum ? true : false);
     }
 
-    //    20. Find Minimum and Maximum: Write a program to find the minimum and maximum values in an array.
+    //  20. Find Minimum and Maximum: Write a program to find the minimum and maximum values in an array.
     public static void findMaxMin(int[] arr) {
         int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        for (int it = 0; it < arr.length; it++) {
-            if (arr[it] > max) {
-                max = arr[it];
+        for (int it : arr) {
+            if (it > max) {
+                max = it;
             }
-            if (arr[it] < min) {
-                min = arr[it];
+            if (it < min) {
+                min = it;
             }
         }
         System.out.println("Maximum value is : " + max + "\nMinimum value is : " + min);
     }
 }
+
