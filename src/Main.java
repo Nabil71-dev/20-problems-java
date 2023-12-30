@@ -76,6 +76,22 @@ public class Main {
 
 //        20
 //        findMaxMin(arr);
+
+//        21
+//        System.out.println(simpleInterest((float)12000, (float)5, (float)0.5));
+
+//        22
+//        System.out.println(convertToFahrenheit((float) 37));
+//        System.out.println(convertToCelsius((float) 98.6));
+
+//        23
+//        checkInputType('m');
+
+//        24
+//        secondLargestFromArray(arr);
+
+//        25
+//        System.out.println(digitSumFromString("12abc20yz68"));
     }
 
 
@@ -313,5 +329,70 @@ public class Main {
         }
         System.out.println("Maximum value is : " + max + "\nMinimum value is : " + min);
     }
+
+    //  21. Calculate the simple interest for given principal, rate of interest, and time.
+    public static float simpleInterest(float principle, float rate, float time) {
+        float result = (float) (principle * rate * time) / 100;
+        return result;
+    }
+
+    //  22. Write a program to convert temperatures from Celsius to Fahrenheit and vice versa.
+    public static float convertToCelsius(float value) {
+        float result = (value - 32) / (float) 1.8;
+        return result;
+    }
+
+    public static float convertToFahrenheit(float value) {
+        float result = ((float) 1.8 * value) + 32;
+        return result;
+    }
+
+    //    23. Write a program that checks whether the input character is an uppercase letter, lowercase letter, a digit, or a special 24. character.
+    public static void checkInputType(char ch) {
+        if (ch >= 65 && ch <= 90) {
+            System.out.println("Uppercase letter");
+        } else if (ch >= 97 && ch <= 122) {
+            System.out.println("Lowercase letter");
+        } else if (ch >= 48 && ch <= 57) {
+            System.out.println("Number");
+        } else {
+            System.out.println("Special charecter");
+        }
+    }
+
+    //    24. Write a program to find the second largest number in a given array.
+    public static void secondLargestFromArray(int[] arr) {
+        if (arr.length < 2) {
+            System.out.println("Invalid");
+        }
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+        for (int it : arr) {
+            if (it > first) {
+                second = first;
+                first = it;
+            } else if (it > second && it != first) {
+                second = it;
+            }
+        }
+        System.out.println((second == Integer.MIN_VALUE) ? "No second largest element available" : "second largest is : " + second);
+    }
+
+//  25 . Given a string containing both letters and numbers, find the sum of all the numbers in the string.
+    public static int digitSumFromString(String str){
+      String tmp="0";
+      int sum=0;
+      for(int it=0; it<str.length(); it++){
+          char ch=str.charAt(it);
+          if (Character.isDigit(ch)){
+              tmp+=ch;
+          }
+          else{
+              sum+=Integer.parseInt(tmp);
+              tmp="0";
+          }
+      }
+      return sum + Integer.parseInt(tmp);
+    }
+
 }
 
